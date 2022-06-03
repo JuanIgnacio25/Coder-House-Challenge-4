@@ -1,0 +1,42 @@
+<h1>Agregar productos</h1>
+<form action="/save" method="POST" onsubmit="return enviarProducto()">
+    <input placeholder="Ingrese el nombre del producto" type="text" name="title" id="title" required>
+    <input placeholder="Ingrese el link a la imagen" type="text" name="thumbnail" id="thumbnail" required>
+    <input placeholder="Ingrese el precio del producto" type="number" name="price" id="price" required>
+    <input type="submit" value="Cargar producto">
+</form>
+
+
+<h1>Productos agregados</h1>
+<div>
+    {{#if productos}}
+    <table>
+        <thead>
+            <th>Title</th>
+            <th>Price</th>
+            <th>Thumbnail</th>
+        </thead>
+        <tbody id="productsContainer">
+            {{#each productos}}
+            <tr>
+                <td>{{this.title}}</td>
+                <td>{{this.price}}</td>
+                <td><img style="width: 50px; height:50px" src={{this.thumbnail}} alt=""></td>
+            </tr>
+            {{/each}}
+        </tbody>
+    </table>
+    {{else}}
+    <h2>No hay productos</h2>
+    {{/if}}
+</div>
+
+
+
+<div class="chatMessages" id="messages">
+</div>
+<form onsubmit="return enviarMensaje()">
+    <input type="email" id="autor" required>
+    <input type="text" id="text" required>
+    <input type="submit" value="Enviar mensaje">
+</form>
